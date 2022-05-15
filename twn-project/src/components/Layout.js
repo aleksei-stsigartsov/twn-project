@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Menu from './menu/Menu';
 
-function NotFoundPage() {
+function Layout() {
     return (
         <>
             <Menu/>
@@ -15,4 +15,4 @@ function NotFoundPage() {
     );
 
 }
-export default NotFoundPage;
+export default Layout;

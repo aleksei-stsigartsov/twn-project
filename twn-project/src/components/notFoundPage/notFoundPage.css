@@ -29,3 +29,7 @@ a{
     font-family: var(--twn-font-bold);
     color: white;
 }
+
+a:hover{
+    color: var(--twn-linkHoverColor);
+}
