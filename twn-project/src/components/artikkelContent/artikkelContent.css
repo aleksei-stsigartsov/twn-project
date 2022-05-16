@@ -39,16 +39,7 @@
     background: rgba(0,0,0,.5);
 }
 
-.image_fade{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    transition: transform .2s;
-    background: center center no-repeat;
-}
+
 
 .image_fade_img{
     position: absolute;
@@ -64,12 +55,7 @@
     transition: transform .3s;
 }
 
-.image_face{
-    background-size: contain;
-}
-
-.image_face .image_fade{
-    background-size: contain;
+.image_face, .image_fade{
     position: absolute;
     top: 0;
     left: 0;
@@ -78,6 +64,23 @@
     z-index: 2;
     transition: transform .2s;
     background: center center no-repeat;
+}
+
+.image_face{
+    background-size: contain;
+}
+
+.image_fade{
+    z-index: 1;
+    overflow: hidden;
+}
+
+.imagebox:hover .image_fade_img {
+    transform: scale(1.2);
+}
+
+.imagebox:hover .image_face{
+    transform: scale(1.05);
 }
 
 button{

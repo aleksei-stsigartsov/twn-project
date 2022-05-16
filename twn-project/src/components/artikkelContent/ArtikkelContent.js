@@ -17,7 +17,7 @@ function ArtikkelContent() {
 
     
     return (
-        <div className='inline'>
+        <>
             {data ? (
             <div className='article'>
                 <h1>{data.title}</h1>
@@ -25,12 +25,12 @@ function ArtikkelContent() {
                     <p>{data.intro}</p>
                 </div>
                 <div className='imagebox'>
-                    <img className='image' src={data.image.large} alt={data.image.alt}/>
+                    <img className='image' src={data.image.medium} alt={data.image.alt} title={data.image.title}/>
                     <div className='image_title'>{data.image.title}</div>
                     <div className='image_fade'>
-                        <div className='image_fade_img' style={{backgroundImage: `url(${data.image.large})`}}></div>
+                        <div className='image_fade_img' style={{backgroundImage: `url(${data.image.medium})`}}></div>
                     </div>
-                    <div className='image_face' style={{backgroundImage: `url(${data.image.large})`}}></div>
+                    <div className='image_face' style={{backgroundImage: `url(${data.image.medium})`}}></div>
                 </div>
                 <div>
                     <p></p>
@@ -40,7 +40,7 @@ function ArtikkelContent() {
                 <button>shit</button>
             </div>
             ) : 'loading...'}
-        </div>
+        </>
     );
 
 }

@@ -104,3 +104,8 @@ body {
     position: relative;
 }
 
+.loader{
+    display: block;
+    height: 6.25rem;
+    margin: 0 auto;
+}
