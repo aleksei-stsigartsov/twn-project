@@ -12,13 +12,17 @@ import './assets/fonts/BoosterNextFY-Thin.woff';
 import './assets/fonts/BoosterNextFY-Thin.woff2';
 
 import './App.css';
+
 import { Routes, Route } from 'react-router-dom';
+
 import DefaultContent from "./components/defaultContent/DefaultContent.js";
 import ArtikkelContent from './components/artikkelContent/ArtikkelContent.js';
 import TabelContent from './components/tabelContent/TabelContent.js';
 import NotFoundPage from './components/notFoundPage/NotFoundPage.js';
-import Layout from './components/Layout.js';
+import NoudedContent from './components/noudedContent/NoudedContent.js';
 import GameOfLife from './components/gameContent/GameOfLife.js';
+
+import Layout from './components/Layout.js';
 
 
 function App() {
@@ -28,6 +32,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout/>}>
           <Route index element={<DefaultContent/>}/>
+          <Route path='intro' element={<NoudedContent/>}/>
           <Route path='article' element={<ArtikkelContent/>}/>
           <Route path='list' element={<TabelContent/>}/>
           <Route path='life' element={<GameOfLife/>}/>
