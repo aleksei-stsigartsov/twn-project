@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital@1&family=Open+Sans:wght@300;400;500&display=swap');
+
+@font-face {
+    font-family: "BoosterNextFY-Black";
+    src: local("BoosterNextFY-Black"), url("./assets/fonts/BoosterNextFY-Black.woff") format("woff");
+    src: local("BoosterNextFY-Black"), url("./assets/fonts/BoosterNextFY-Black.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "BoosterNextFY-Bold";
+    src: local("BoosterNextFY-Bold"), url("./assets/fonts/BoosterNextFY-Bold.woff") format("woff");
+    src: local("BoosterNextFY-Bold"), url("./assets/fonts/BoosterNextFY-Bold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "BoosterNextFY-Light";
+    src: local("BoosterNextFY-Light"), url("./assets/fonts/BoosterNextFY-Light.woff") format("woff");
+    src: local("BoosterNextFY-Light"), url("./assets/fonts/BoosterNextFY-Light.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "BoosterNextFY-Medium";
+    src: local("BoosterNextFY-Medium"), url("./assets/fonts/BoosterNextFY-Medium.woff") format("woff");
+    src: local("BoosterNextFY-Medium"), url("./assets/fonts/BoosterNextFY-Medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "BoosterNextFY-Regular";
+    src: local("BoosterNextFY-Regular"), url("./assets/fonts/BoosterNextFY-Regular.woff") format("woff");
+    src: local("BoosterNextFY-Regular"), url("./assets/fonts/BoosterNextFY-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "BoosterNextFY-Thin";
+    src: local("BoosterNextFY-Thin"), url("./assets/fonts/BoosterNextFY-Thin.woff") format("woff");
+    src: local("BoosterNextFY-Thin"), url("./assets/fonts/BoosterNextFY-Thin.woff2") format("woff2");
+}
+
+:root {
+    --twn-font-black: BoosterNextFY-Black;
+    --twn-font-bold: BoosterNextFY-Bold;
+    --twn-font-light: BoosterNextFY-Light;
+    --twn-font-medium: BoosterNextFY-Medium;
+    --twn-font-regular: BoosterNextFY-Regular;
+    --twn-font-thin: BoosterNextFY-Thin;
+    --twn-textFont: "Open Sans";
+    --twn-rootFontSize: 16px;
+    --twn-highlightColor: #14cc76;
+    --twn-textColor: #3a3d57;
+    --twn-alternateTextColor: #fff;
+    --twn-secondaryColor: #ff57a2;
+    --twn-backgroundColor: #3a3d57;
+    --twn-linkHoverColor: #03875c;
+    --twn-blockColor: #efefef;
+    --twn-menuWidth: 220px;
+    --twnMaxWidth: 1000px;
+}
+
+body {
+    background: var(--twn-backgroundColor);
+    margin: 0;
+    color: var(--twn-alternateTextColor);
+    font-family: var(--twn-textFont);
+    font-size: var(--twn-rootFontSize);
+}
+
+* {
+    box-sizing: border-box;
+    text-decoration-color: white;
+    scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--twn-backgroundColor);
+    outline: 1px solid white;
+}
+
+.page {
+    background-image: url(./assets/images/bg-deco-left.svg),url(./assets/images/bg-deco-right.svg);
+    background-repeat: no-repeat;
+    background-position: var(--twn-menuWidth) bottom,100% 0;
+    background-size: 150px,250px;
+    background-attachment: fixed;
+    display: block;
+    margin-left: var(--twn-menuWidth);
+    height: 100vh;
+    overflow: auto;
+    padding: 5rem 2.5rem;
+}
+
+.inline {
+    max-width: var(--twnMaxWidth);
+    min-height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.loader{
+    display: block;
+    height: 6.25rem;
+    margin: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
