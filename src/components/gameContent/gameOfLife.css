@@ -19,3 +19,24 @@
     margin: 0;
     text-transform: uppercase;
 }
+
+.inl-center div.container_gif{
+    width: 600px;
+    height: auto;
+}
+
+.inl-center div.container_gif p{
+    
+    color: white;
+    font-weight:bold;
+    text-align:center;
+    line-height:15px;
+    background-image:url("https://media0.giphy.com/media/2gWgohuJHecfAfGZTj/giphy.gif?cid=ecf05e47i9ohmmu8w7wldtva9wsupo9wes3jz4yd6ewkwihz&rid=giphy.gif&ct=s");
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:contain;
+    -webkit-background-clip:text;
+    color:transparent;
+    filter:brightness(90%);
+    
+  }

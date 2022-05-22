@@ -1,11 +1,12 @@
-.article h1{
+.article h1 {
     color: white;
     text-align: center;
     font-family: var(--twn-font-bold);
     text-transform: uppercase;
     font-size: 2.8125rem;
 }
-.bodyp p{
+
+.bodyp p {
     margin: 2.5rem 0;
     text-align: left;
     font-size: var(--twn-rootFontSize);
@@ -15,12 +16,12 @@
     margin-inline-end: 0px;
 }
 
-.intro p{
+.intro p {
     margin: 2.5rem 0;
     font-weight: 600;
 }
 
-.imagebox{
+.imagebox {
     display: block;
     padding-bottom: 50%;
     position: relative;
@@ -28,7 +29,7 @@
     transform: translate(0);
 }
 
-.imagebox .image{
+.imagebox .image {
     position: absolute;
     top: 0;
     left: 0;
@@ -38,7 +39,7 @@
     z-index: 5;
 }
 
-.image_title{
+.image_title {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -46,12 +47,12 @@
     padding: 0.625rem 1.5rem;
     font-size: 1rem;
     z-index: 6;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
 }
 
 
 
-.image_fade_img{
+.image_fade_img {
     position: absolute;
     top: 0;
     left: 0;
@@ -65,7 +66,7 @@
     transition: transform .3s;
 }
 
-.image_face, .image_fade{
+.image_face, .image_fade {
     position: absolute;
     top: 0;
     left: 0;
@@ -76,11 +77,11 @@
     background: center center no-repeat;
 }
 
-.image_face{
+.image_face {
     background-size: contain;
 }
 
-.image_fade{
+.image_fade {
     z-index: 1;
     overflow: hidden;
 }
@@ -89,11 +90,11 @@
     transform: scale(1.2);
 }
 
-.imagebox:hover .image_face{
+.imagebox:hover .image_face {
     transform: scale(1.05);
 }
 
-.article button{
+.article button {
     background: var(--twn-secondaryColor);
     font-family: var(--twn-textFont);
     display: inline-block;
@@ -103,4 +104,15 @@
     font-weight: 700;
     border-color: transparent;
     color: white;
+}
+
+.article button+button {
+    margin-left: 1rem;
+}
+
+
+@media screen and (max-width: 960px) {
+    .article h1 {
+        font-size: 2.25rem;
+    }
 }

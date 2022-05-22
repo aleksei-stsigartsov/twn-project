@@ -57,11 +57,12 @@ ul li a:hover {
     color: var(--twn-linkHoverColor);
     transform: scale(1.05);
 }
+
 .twn-menu .active svg {
     transform: scale(1.40);
 }
 
-.notrn{
+.notrn {
     transform: scale(1.00) !important;
 }
 
@@ -85,13 +86,20 @@ ul li a:hover svg {
     content: "\f15b";
 }
 
+.twn-header .logo-header {
+    display: none;
+}
 
-/* @media screen and (max-width: 960px) {
-    .twn-menu {
-        padding-top: 3.125rem;
-        transform: translate(calc(var(--twn-menuWidth) * -1));
-        transition: transform .25s;
-        display: flex;
+@media screen and (max-width: 960px) {
+    ul {
+        padding-top: 2.5rem;
+    }
+
+    ul li a {
+        font-size: 1rem;
+    }
+    .twn-header {
+        display: none;
         position: fixed;
         top: 0;
         left: 0;
@@ -100,5 +108,69 @@ ul li a:hover svg {
         background: white;
         z-index: 999;
         padding: 0.625rem 1.25rem;
+        text-align: center;
     }
-} */
+
+    .twn-header .logo-header {
+        height: 100%;
+        margin: 0 auto;
+        padding-left: 6rem;
+        display: inline;
+    }
+
+    .twn-menu {
+        transform: translate(0);
+        padding-top: 3.125rem;
+        transform: translate(calc(var(--twn-menuWidth) * -1));
+        transition: transform .25s;
+    }
+
+    .menu-visible{
+        transform: translate(0);
+    }
+
+    .logo{
+        display: none;
+    }
+
+    .twn-header {
+        display: flex;
+    }
+
+    .twn-header button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 3.75rem;
+        margin: -0.625rem 0 -0.625rem -1.25rem;
+        border: none;
+        cursor: pointer;
+        background: none;
+        color: #333;
+        
+    }
+
+    .fa {
+        
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .fa-large {
+        font-size: 1.33333333em;
+        line-height: .75em; 
+        vertical-align: 0.3em;
+    }
+
+    .page {
+        margin-left: 0;
+        background-position: 0 bottom, 100% 0;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-top: 7.5rem;
+    }
+
+}

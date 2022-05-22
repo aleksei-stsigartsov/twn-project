@@ -49,3 +49,9 @@
     background-color: #41e592;
     color: #3a3d57;
 }
+
+@media screen and (max-width: 960px) {
+    .requirements h2 {
+        font-size: 1.5rem !important;
+    }
+}

@@ -1,4 +1,4 @@
-.nimikiri h1 {
+.nimekiri h1 {
     text-align: center;
     text-transform: uppercase;
     font-size: 2.8125rem;
@@ -6,32 +6,32 @@
     color: white;
 }
 
-.nimikiri .table-wrapper {
+.nimekiri .table-wrapper {
     display: block;
     overflow: auto;
     width: 100%;
 }
 
-.nimikiri table {
+.nimekiri table {
     border-collapse: collapse;
     min-width: 100%;
     font-size: 1rem;
     table-layout: fixed;
 }
 
-.nimikiri table th,
-.nimikiri table td {
+.nimekiri table th,
+.nimekiri table td {
     padding: 0.625rem 1rem;
     border-bottom: #fff 0.0625rem solid;
 }
 
-.nimikiri tr {
+.nimekiri tr {
     display: table-row;
     vertical-align: inherit;
     border-color: inherit;
 }
 
-.nimikiri table th button {
+.nimekiri table th button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -44,21 +44,25 @@
     font-weight: bold;
 }
 
-.nimikiri table .clickable td {
+.nimekiri table .clickable td {
     cursor: pointer;
     color: white;
 }
 
-.nimikiri table .td_phone {
+.nimekiri table .td_phone {
     white-space: nowrap;
 }
 
-.nimikiri .buttonWrapper{
+.nimekiri .buttonWrapper{
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.nimikiri .fa {
+.nimekiri .buttonWrapper .fa{
+    margin-left: 0 !important;
+}
+
+.nimekiri .fa {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;
@@ -71,33 +75,33 @@
     content: "\f053";
 }
 
-.twn-button+.twn-button {
+.twn-button_transparent+.twn-button_transparent {
     margin-left: 16px;
 }
 
-.nimikiri table th{
+.nimekiri table th{
     background: #333;
     color: #fff;
     text-align: left;
     white-space: nowrap;
 }
 
-.nimikiri table tr:nth-child(even) td{
+.nimekiri table tr:nth-child(even) td{
     background: rgba(255,255,255,.1);
 }
 
-.nimikiri table .active td {
+.nimekiri table .active td {
     background: #fff!important;
     color: #333!important;
 }
 
-.nimikiri button .disabled{
+.nimekiri button .disabled{
     opacity: .4;
     pointer-events: none;
     border: none;
 }
 
-.nimikiri .twn-button_transparent {
+.nimekiri .twn-button_transparent {
     font-size: 1rem;
     background: none;
     border: none;
@@ -105,32 +109,32 @@
     width: 2.5em;
     height: 2.5em;
     border-radius: 2.5em;
-    display: inline-flex;
+    
     justify-content: center;
     align-items: center;
     padding: 0;
     transition: none;
 }
 
-.nimikiri .twn-button_transparent:hover {
+.nimekiri .twn-button_transparent:hover {
     border: #fff 0.0625rem solid;
 }
 
-.nimikiri .twn-button_active{
+.nimekiri .twn-button_active{
     background: white;
     color: #333;
 }
 
-.nimikiri table .active + tr td{
+.nimekiri table .active + tr td{
     background: #fff!important;
     color: #333!important;
 }
 
-.nimikiri table .tab{
+.nimekiri table .tab{
     display: flex;
 }
 
-.nimikiri table .tab .image{
+.nimekiri table .tab .image{
     width: 12.5rem;
     height: 12.5rem;
     flex-shrink: 0;
@@ -141,7 +145,7 @@
     background-color: #f1f1f1;
 }
 
-.nimikiri .twn-button_small {
+.nimekiri .twn-button_small {
     display: inline-block;
     margin: 0 0 16px;
     transition: background-color .25s ease-out;
@@ -160,33 +164,41 @@
     text-transform: uppercase;
 }
 
-.nimikiri .twn-button_small:hover {
+.nimekiri .twn-button_small:hover {
     background-color: #41e592;
     color: #3a3d57;
 }
 
-.nimikiri .twn-button_small {
+.nimekiri .twn-button_small {
     margin-top: 20px;
 }
 
-.nimikiri .twn-button_small {
+.nimekiri .twn-button_small {
     font-size: .75rem;
     padding: 0.85em 1.7em;
 }
 
 
-.nimikiri table p:last-child {
+.nimekiri table p:last-child {
     margin-bottom: 0;
 }
 
-.nimikiri table p:first-child {
+.nimekiri table p:first-child {
     margin-top: 0;
 }
 
-.nimikiri p{
+.nimekiri p{
     margin: 2.5rem 0;
 }
 
-.nimikiri table .tab .body {
+.nimekiri table .tab .body {
     padding-left: 1rem;
+}
+
+
+
+@media screen and (max-width: 960px) {
+    .nimekiri h1 {
+        font-size: 2.25rem !important;
+    }
 }

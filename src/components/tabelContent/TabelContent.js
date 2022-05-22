@@ -1,84 +1,159 @@
 import './tabelContent.css';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 import { faSort, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import loader from "./../../assets/images/loader.svg";
+import React, { useState, useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 
 
+const calculateRange = (data, rowsPerPage) => {
+    const range = [];
+    const num = Math.ceil(data.length / rowsPerPage);
+    let i = 1;
+    for (let i = 1; i <= num; i++) {
+        range.push(i);
+    }
+    return range;
+};
+
+const sliceData = (data, page, rowsPerPage) => {
+    return data.slice((page - 1) * rowsPerPage, page * rowsPerPage);
+};
+
+const useTable = (data, page, rowsPerPage) => {
+    const [tableRange, setTableRange] = useState([]);
+    const [slice, setSlice] = useState([]);
+
+    useEffect(() => {
+        const range = calculateRange(data, rowsPerPage);
+        setTableRange([...range]);
+
+        const slice = sliceData(data, page, rowsPerPage);
+        setSlice([...slice]);
+    }, [data, setTableRange, page, setSlice]);
+
+    return { slice, range: tableRange };
+};
 
 function TabelContent() {
+    const [nimekiriList, setNimekiriList] = useState();
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [itemsPerPage, setItemsPerPage] = useState(10);
+    // const indexOfLastItem = currentPage * itemsPerPage;
+    // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+        // const filterByName = () => {
+    //     const zopa = [...nimekiriList.list].sort((nameOne, nameTwo) => {
+
+    //         if (nameOne.name < nameTwo.name) {
+    //             return -1;
+    //         } else { return 1; }
+    //         return 0;
+    //     })
+
+    //     console.log(zopa);
+    //     console.log(nimekiriList);
+    // }
+    // const filterBySurname = () => { }
+    // const filterBySex = () => { }
+    // const filterByBirthDate = () => { }
+
+    const [itemIK, setItemIK] = useState();
+    const [activeId, setActiveId] = useState();
+
+    const [page, setPage] = useState(1);
+    // const { slice, range } = useTable(nimekiriList["list"], page, 10);
+     
+    const toggleClick = (id) => {
+        return activeId != id ? setActiveId(id) : setActiveId(null)
+    }
+
+    useEffect(() => {
+        fetch('https://midaiganes.irw.ee/api/list?limit=10')
+            .then(res => res.json())
+            .then(
+                (result) => setNimekiriList(result),
+                (e) => console.warn('fetch failure', e)
+            )
+    }, []);
 
     return (
+        <>
+            <div className='nimekiri'>
+                <h1>Nimekiri</h1>
+                {nimekiriList ? (
 
-        <div className='nimikiri'>
-            <h1>Nimekiri</h1>
-            <div className='twn-table-content'>
-                <div className='table-wrapper'>
-                    <table>
-                        <thead>
-                            <tr>
-                                {/* по клику меняется иконка сортировки */}
-                                <th><button>Eesnimi<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                <th><button>Perekonnanimi<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                <th><button>Sugu<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                <th><button>Sünnikuupäev<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                <th><button>Telefon</button></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* по клику добавляется класс актив */}
-                            <tr className='clickable active'>
-                                <td className='td_firstname' style={{ width: "20%" }}>
-                                    <span>Aleksei</span>
-                                </td>
-                                <td className='td_surname' style={{ width: "20%" }}>
-                                    <span>Stsigartsov</span>
-                                </td>
-                                <td className='td_sex' style={{ width: "20%" }}>
-                                    <span>Mees</span>
-                                </td>
-                                <td className='td_personal_code' style={{ width: "20%" }}>
-                                    <span>17.04.2003</span>
-                                </td>
-                                <td className='td_telefon' style={{ width: "20%" }}>
-                                    <span>+372 56965063</span>
-                                </td>
-                            </tr>
-                            {/* по клику снизу добавляется тэг */}
-                            <tr>
-                                <td colSpan='5'>
-                                    <div className='tab'>
-                                        <div className='image' style={{ backgroundImage: 'url(http://midaiganes.irw.ee/api/imgs/medium/9bd6086a.jpg)' }}></div>
-                                        <div className='body'>
-                                            <div>
-                                                <p>Phasellus consequat convallis arcu tempor penatibus lobortis sagittis,
-                                                    posuere duis litora maecenas quam ut dis hac, lacus erat commodo eget varius semper.
-                                                    Laoreet condimentum augue finibus malesuada feugiat suspendisse, per auctor hac metus
-                                                    erat efficitur consectetur, ac gravida blandit...
-                                                </p>
-                                            </div>
-                                            <a className='twn-button_small' href=''>Loe rohkem</a>
-                                            {/* по клику генерируется страница с  */}
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div className='buttonWrapper'>
-                    <button className='disabled twn-button_transparent'>
-                        <FontAwesomeIcon icon={faChevronLeft} className='fa fa-chevron-left fa-md'></FontAwesomeIcon>
-                    </button>
-                    <button className='twn-button_transparent twn-button_active'>1</button>
-                    <button className='twn-button_transparent'>2</button>
-                    <button className='twn-button_transparent'>
-                        <FontAwesomeIcon icon={faChevronRight} className='fa fa-chevron-right fa-md'></FontAwesomeIcon>
-                    </button>
-                </div>
+                    <div className='twn-table-content'>
+                        <div className='table-wrapper'>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th><button>Eesnimi<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button>Perekonnanimi<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button>Sugu<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button>Sünnikuupäev<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button>Telefon</button></th>
+                                    </tr>
+                                </thead>
+
+                                {nimekiriList && nimekiriList.list.map((item) => {
+                                    const dateBirth = (
+                                        `${item.personal_code}`.substring(5, 7) + '.'
+                                        + `${item.personal_code}`.substring(3, 5) + '.'
+                                        + (parseInt((`${item.personal_code}`.substring(1, 3))) >= 22 ? '19' : '20')
+                                        + `${item.personal_code}`.substring(1, 3));
+
+                                    const phoneNum = ((`${item.phone}`.substring(0, 4) + ' ' + (`${item.phone}`.substring(4, 14))));
+                                    const itemSex = (item.sex === 'm' ? 'Mees' : 'Naine')
+                                    return (
+                                        <>
+                                            <tr key={item.id} onClick={() => toggleClick(item.id)} className={activeId === item.id ? "active" : 'not_active'}>
+                                                <td className='td_firstname' style={{ width: "20%" }}>
+                                                    <span>{item.firstname}</span>
+                                                </td>
+                                                <td className='td_surname' style={{ width: "20%" }}>
+                                                    <span>{item.surname}</span>
+                                                </td>
+                                                <td className='td_sex' style={{ width: "20%" }}>
+                                                    <span>{itemSex}</span>
+                                                </td>
+                                                <td className='td_personal_code' style={{ width: "20%" }}>
+                                                    <span>{dateBirth}</span>
+                                                </td>
+                                                <td className='td_telefon' style={{ width: "20%" }}>
+                                                    <span>{phoneNum}</span>
+                                                </td>
+                                            </tr>{activeId === item.id ? <tr className='details' >
+                                                <td colSpan='5'>
+                                                    <div className='tab'>
+                                                        <div className='image' style={{ backgroundImage: `url(${item.image.medium})` }}></div>
+                                                        <div className='body'>
+                                                            <div dangerouslySetInnerHTML={{ __html: item.body.substring(0, 300) + '...' }}></div>
+                                                            <NavLink className='twn-button_small' to={`/article/${item.id}`}>Loe rohkem</NavLink>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr> : null}
+                                        </>
+                                    );
+                                })}
+
+                            </table>
+                        </div>
+                        <div className='buttonWrapper'>
+                            <button className='disabled twn-button_transparent'>
+                                <FontAwesomeIcon icon={faChevronLeft} className='fa fa-chevron-left fa-md'></FontAwesomeIcon>
+                            </button>
+                            <button className='twn-button_transparent twn-button_active'>1</button>
+                            <button className='twn-button_transparent'>2</button>
+                            <button className='twn-button_transparent'>
+                                <FontAwesomeIcon icon={faChevronRight} className='fa fa-chevron-right fa-md'></FontAwesomeIcon>
+                            </button>
+                        </div>
+                    </div>
+                ) : <img src={loader} className="loader" aria-label="TWN loader" />}
             </div>
-
             {/* <ol>
-                <li>1. по клику на любой элемент tr clickable добавляется класс active </li>
-                <li>2. после этого генерируется дополнтилельный tr тэг с подробной информацией</li>  
+                <li>!0. реализовать стили в панели пагинации</li>
                 <li>3. по нажатию кнопки "читать больше" генерируется страница с путем article/{id} со всей информацией</li>  
                 <li>4. доработать вывод тэгов из json</li>  
                 <li>5. по клику на любой другой элемент из списка в таблице, старый блок закрывается</li>
@@ -87,11 +162,36 @@ function TabelContent() {
                 <li>8. реализовать вывод всех лэйблов у элементов таблицы</li>
                 <li>9. реализовать корректный вывод данных(пол, дату рождения, номер телефона)</li>
                 <li>10. реализовать переодресацию в случае пустой страницы</li>
-                <li>11. адаптивность страниц</li>
                 <li>12. реализовать game of life или танцующий текст</li>
-            </ol> */}
-        </div>
+                </ol> */}
+        </>
     );
 
 }
+
+class Details extends React.Component {
+    render() {
+        return (
+            <tr id='content'>
+                <td colSpan='5'>
+                    <div className='tab'>
+                        <div className='image' style={{ backgroundImage: 'url(http://midaiganes.irw.ee/api/imgs/medium/9bd6086a.jpg)' }}></div>
+                        <div className='body'>
+                            <div>
+                                <p>Phasellus consequat convallis arcu tempor penatibus lobortis sagittis,
+                                    posuere duis litora maecenas quam ut dis hac, lacus erat commodo eget varius semper.
+                                    Laoreet condimentum augue finibus malesuada feugiat suspendisse, per auctor hac metus
+                                    erat efficitur consectetur, ac gravida blandit...
+                                </p>
+                            </div>
+                            <a className='twn-button_small' href=''>Loe rohkem</a>
+                            {/* по клику генерируется страница с  */}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        )
+    }
+}
+
 export default TabelContent;
