@@ -38,7 +38,6 @@ function App() {
           <Route path='list' element={<TabelContent/>}/>
           <Route path='life' element={<GameOfLife/>}/>
           <Route path='*' element={<NotFoundPage/>}/>
-          <Route path='article/:id' element={<NotFoundPage/>}/>
         </Route>
       </Routes>
     </>
