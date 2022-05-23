@@ -7,7 +7,7 @@
  $ npm i 
  
  
- //in case if gives errors, it may require extra installed libraries:
+ //in case if gives errors, it may requires extra installed libraries:
  
  $ component install FortAwesome/Font-Awesome
  $ npm install react-truncate
