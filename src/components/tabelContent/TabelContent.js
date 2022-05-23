@@ -1,9 +1,10 @@
 import './tabelContent.css';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
-import { faSort, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faSort, faSortDown, faSortUp, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import loader from "./../../assets/images/loader.svg";
 import React, { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
+
 
 
 const calculateRange = (data, rowsPerPage) => {
@@ -39,8 +40,6 @@ function TabelContent() {
     const [nimekiriList, setNimekiriList] = useState();
     const setList = (list) => {
         const newNimekiriList = { ...nimekiriList, list };
-        console.log(3);
-        console.log(newNimekiriList);
         setNimekiriList(newNimekiriList);
     }
     // const [currentPage, setCurrentPage] = useState(1);
@@ -50,46 +49,50 @@ function TabelContent() {
 
     const filterByName = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
-            if (firstItem.firstname < secondItem.firstname) return -1;
-            else if (firstItem.firstname > secondItem.firstname) return 1;
+            if (firstItem.firstname < secondItem.firstname) return -1; 
+            if (firstItem.firstname > secondItem.firstname) return 1;
             return 0;
         });
+        setList(sortedList);
+        setSortedDescName((s) => !s);
 
-        console.log(1);
-        console.log(sortedList);
-        console.log(2);
-        console.log(nimekiriList.list);
-        setList(sortedList)
     }
     const filterBySurname = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
-            if (firstItem.surname < secondItem.surname) return -1;
-            else if (firstItem.surname > secondItem.surname) return 1;
+            if (firstItem.surname < secondItem.surname) return -1; 
+            if (firstItem.surname > secondItem.surname) return 1;
             return 0;
         });
-        setList(sortedList)
+        setList(sortedList);
+        setSortedDescSurname((s) => !s);
     }
     const filterBySex = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
-            if (firstItem.sex < secondItem.sex) return -1;
-            else if (firstItem.sex > secondItem.sex) return 1;
+            if (firstItem.sex < secondItem.sex) return -1; 
+            if (firstItem.sex > secondItem.sex) return 1;
             return 0;
         });
-        setList(sortedList)
+        setList(sortedList);
+        setSortedDescSex((s) => !s);
     }
     const filterByBirthDate = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
-            if (firstItem.personal_code < secondItem.personal_code) return -1;
-            else if (firstItem.personal_code > secondItem.personal_code) return 1;
+            if (firstItem.personal_code < secondItem.personal_code) return -1; 
+            if (firstItem.personal_code > secondItem.personal_code) return 1;
             return 0;
         });
-        setList(sortedList)
+        setList(sortedList);
+        setSortedDescCode((s) => !s);
     }
 
     const [itemIK, setItemIK] = useState();
     const [activeId, setActiveId] = useState();
 
     const [page, setPage] = useState(1);
+    const [sortedDescName, setSortedDescName] = useState(false);
+    const [sortedDescSurname, setSortedDescSurname] = useState(false);
+    const [sortedDescSex, setSortedDescSex] = useState(false);
+    const [sortedDescCode, setSortedDescCode] = useState(false);
     // const { slice, range } = useTable(nimekiriList["list"], page, 10);
 
     const toggleClick = (id) => {
@@ -116,10 +119,10 @@ function TabelContent() {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th><button onClick={filterByName}>Eesnimi<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                        <th><button onClick={filterBySurname}>Perekonnanimi<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                        <th><button onClick={filterBySex}>Sugu<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                        <th><button onClick={filterByBirthDate}>Sünnikuupäev<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterByName}>Eesnimi<FontAwesomeIcon icon={sortedDescName ? true ? faSortDown : faSortUp: faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterBySurname}>Perekonnanimi<FontAwesomeIcon icon={sortedDescSurname ? true ? faSortDown: faSortUp: faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterBySex}>Sugu<FontAwesomeIcon icon={sortedDescSex ? true ? faSortDown: faSortUp: faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterByBirthDate}>Sünnikuupäev<FontAwesomeIcon icon={sortedDescCode ? true ? faSortDown: faSortUp: faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
                                         <th><button>Telefon</button></th>
                                     </tr>
                                 </thead>
