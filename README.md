@@ -4,7 +4,7 @@
 <pre>
  //open terminal and enter:
  
- $ npm i //at first
+ $ npm i 
  
  
  //in case if gives errors, it may require extra installed libraries:
