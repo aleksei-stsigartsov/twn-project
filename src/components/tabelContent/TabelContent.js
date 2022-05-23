@@ -54,7 +54,9 @@ function TabelContent() {
             return 0 && setSortedName(faSort);
         });
         setList(sortedList);
-
+        setSortedCode(faSort);
+        setSortedSurname(faSort);
+        setSortedSex(faSort);
     }
     const filterBySurname = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
@@ -63,14 +65,20 @@ function TabelContent() {
             return 0 && setSortedSurname(faSort);
         });
         setList(sortedList);
+        setSortedName(faSort);
+        setSortedCode(faSort);
+        setSortedSex(faSort);
     }
     const filterBySex = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
-            if (firstItem.sex < secondItem.sex) return -1; setSortedSex(faSortDown);
-            if (firstItem.sex > secondItem.sex) return 1; setSortedSex(faSortUp);
+            if (firstItem.sex < secondItem.sex) return -1; setSortedSex(faSortUp);
+            if (firstItem.sex > secondItem.sex) return 1; setSortedSex(faSortDown);
             return 0 && setSortedSex(faSort);
         });
         setList(sortedList);
+        setSortedName(faSort);
+        setSortedSurname(faSort);
+        setSortedCode(faSort);
     }
     const filterByBirthDate = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
@@ -79,6 +87,9 @@ function TabelContent() {
             return 0 && setSortedCode(faSort);
         });
         setList(sortedList);
+        setSortedName(faSort);
+        setSortedSurname(faSort);
+        setSortedSex(faSort);
 
     }
 
