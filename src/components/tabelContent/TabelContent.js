@@ -7,34 +7,39 @@ import { NavLink } from 'react-router-dom';
 
 
 
-const calculateRange = (data, rowsPerPage) => {
-    const range = [];
-    const num = Math.ceil(data.length / rowsPerPage);
-    let i = 1;
-    for (let i = 1; i <= num; i++) {
-        range.push(i);
-    }
-    return range;
-};
+// const calculateRange = (data, rowsPerPage) => {
+//     const range = [];
+//     const num = Math.ceil(data.length / rowsPerPage);
+//     let i = 1;
+//     for (let i = 1; i <= num; i++) {
+//         range.push(i);
+//     }
+//     return range;
+// };
 
-const sliceData = (data, page, rowsPerPage) => {
-    return data.slice((page - 1) * rowsPerPage, page * rowsPerPage);
-};
+// const sliceData = (data, page, rowsPerPage) => {
+//     return data.slice((page - 1) * rowsPerPage, page * rowsPerPage);
+// };
 
-const useTable = (data, page, rowsPerPage) => {
-    const [tableRange, setTableRange] = useState([]);
-    const [slice, setSlice] = useState([]);
+// const useTable = (data, page, rowsPerPage) => {
+//     const [tableRange, setTableRange] = useState([]);
+//     const [slice, setSlice] = useState([]);
 
-    useEffect(() => {
-        const range = calculateRange(data, rowsPerPage);
-        setTableRange([...range]);
+//     useEffect(() => {
+//         const range = calculateRange(data, rowsPerPage);
+//         setTableRange([...range]);
 
-        const slice = sliceData(data, page, rowsPerPage);
-        setSlice([...slice]);
-    }, [data, setTableRange, page, setSlice]);
+//         const slice = sliceData(data, page, rowsPerPage);
+//         setSlice([...slice]);
+//     }, [data, setTableRange, page, setSlice]);
 
-    return { slice, range: tableRange };
-};
+//     return { slice, range: tableRange };
+// };
+// const [currentPage, setCurrentPage] = useState(1);
+// const [itemsPerPage, setItemsPerPage] = useState(10);
+// const indexOfLastItem = currentPage * itemsPerPage;
+// const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
 
 function TabelContent() {
     const [nimekiriList, setNimekiriList] = useState();
@@ -42,10 +47,6 @@ function TabelContent() {
         const newNimekiriList = { ...nimekiriList, list };
         setNimekiriList(newNimekiriList);
     }
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const [itemsPerPage, setItemsPerPage] = useState(10);
-    // const indexOfLastItem = currentPage * itemsPerPage;
-    // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
     const filterByName = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
@@ -53,10 +54,7 @@ function TabelContent() {
             if (firstItem.firstname > secondItem.firstname) return 1; setSortedName(faSortUp);
             return 0 && setSortedName(faSort);
         });
-        setList(sortedList);
-        setSortedCode(faSort);
-        setSortedSurname(faSort);
-        setSortedSex(faSort);
+        setList(sortedList); setSortedCode(faSort); setSortedSurname(faSort); setSortedSex(faSort);
     }
     const filterBySurname = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
@@ -64,10 +62,7 @@ function TabelContent() {
             if (firstItem.surname > secondItem.surname) return 1; setSortedSurname(faSortUp);
             return 0 && setSortedSurname(faSort);
         });
-        setList(sortedList);
-        setSortedName(faSort);
-        setSortedCode(faSort);
-        setSortedSex(faSort);
+        setList(sortedList); setSortedName(faSort); setSortedCode(faSort); setSortedSex(faSort);
     }
     const filterBySex = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
@@ -75,10 +70,7 @@ function TabelContent() {
             if (firstItem.sex > secondItem.sex) return 1; setSortedSex(faSortDown);
             return 0 && setSortedSex(faSort);
         });
-        setList(sortedList);
-        setSortedName(faSort);
-        setSortedSurname(faSort);
-        setSortedCode(faSort);
+        setList(sortedList); setSortedName(faSort); setSortedSurname(faSort); setSortedCode(faSort);
     }
     const filterByBirthDate = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
@@ -86,11 +78,7 @@ function TabelContent() {
             if (firstItem.personal_code > secondItem.personal_code) return 1; setSortedCode(faSortUp);
             return 0 && setSortedCode(faSort);
         });
-        setList(sortedList);
-        setSortedName(faSort);
-        setSortedSurname(faSort);
-        setSortedSex(faSort);
-
+        setList(sortedList); setSortedName(faSort); setSortedSurname(faSort); setSortedSex(faSort);
     }
 
     const [itemIK, setItemIK] = useState();
@@ -181,7 +169,7 @@ function TabelContent() {
                         </div>
                         <div className='buttonWrapper'>
                             <button className='disabled twn-button_transparent'>
-                                <FontAwesomeIcon icon={faChevronLeft} className='fa fa-chevron-left fa-md'></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faChevronLeft} className='fa fa-chevron-left fa-md disabled'></FontAwesomeIcon>
                             </button>
                             <button className='twn-button_transparent twn-button_active'>1</button>
                             <button className='twn-button_transparent'>2</button>
