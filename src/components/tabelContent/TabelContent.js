@@ -49,50 +49,47 @@ function TabelContent() {
 
     const filterByName = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
-            if (firstItem.firstname < secondItem.firstname) return -1; 
-            if (firstItem.firstname > secondItem.firstname) return 1;
-            return 0;
+            if (firstItem.firstname < secondItem.firstname) return -1; setSortedName(faSortDown);
+            if (firstItem.firstname > secondItem.firstname) return 1; setSortedName(faSortUp);
+            return 0 && setSortedName(faSort);
         });
         setList(sortedList);
-        setSortedDescName((s) => !s);
 
     }
     const filterBySurname = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
-            if (firstItem.surname < secondItem.surname) return -1; 
-            if (firstItem.surname > secondItem.surname) return 1;
-            return 0;
+            if (firstItem.surname < secondItem.surname) return -1; setSortedSurname(faSortDown);
+            if (firstItem.surname > secondItem.surname) return 1; setSortedSurname(faSortUp);
+            return 0 && setSortedSurname(faSort);
         });
         setList(sortedList);
-        setSortedDescSurname((s) => !s);
     }
     const filterBySex = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
-            if (firstItem.sex < secondItem.sex) return -1; 
-            if (firstItem.sex > secondItem.sex) return 1;
-            return 0;
+            if (firstItem.sex < secondItem.sex) return -1; setSortedSex(faSortDown);
+            if (firstItem.sex > secondItem.sex) return 1; setSortedSex(faSortUp);
+            return 0 && setSortedSex(faSort);
         });
         setList(sortedList);
-        setSortedDescSex((s) => !s);
     }
     const filterByBirthDate = () => {
         const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
-            if (firstItem.personal_code < secondItem.personal_code) return -1; 
-            if (firstItem.personal_code > secondItem.personal_code) return 1;
-            return 0;
+            if (firstItem.personal_code < secondItem.personal_code) return -1; setSortedCode(faSortDown);
+            if (firstItem.personal_code > secondItem.personal_code) return 1; setSortedCode(faSortUp);
+            return 0 && setSortedCode(faSort);
         });
         setList(sortedList);
-        setSortedDescCode((s) => !s);
+
     }
 
     const [itemIK, setItemIK] = useState();
     const [activeId, setActiveId] = useState();
 
     const [page, setPage] = useState(1);
-    const [sortedDescName, setSortedDescName] = useState(false);
-    const [sortedDescSurname, setSortedDescSurname] = useState(false);
-    const [sortedDescSex, setSortedDescSex] = useState(false);
-    const [sortedDescCode, setSortedDescCode] = useState(false);
+    const [sortedName, setSortedName] = useState(faSort);
+    const [sortedSurname, setSortedSurname] = useState(faSort);
+    const [sortedSex, setSortedSex] = useState(faSort);
+    const [sortedCode, setSortedCode] = useState(faSort);
     // const { slice, range } = useTable(nimekiriList["list"], page, 10);
 
     const toggleClick = (id) => {
@@ -119,10 +116,10 @@ function TabelContent() {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th><button onClick={filterByName}>Eesnimi<FontAwesomeIcon icon={sortedDescName ? true ? faSortDown : faSortUp: faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                        <th><button onClick={filterBySurname}>Perekonnanimi<FontAwesomeIcon icon={sortedDescSurname ? true ? faSortDown: faSortUp: faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                        <th><button onClick={filterBySex}>Sugu<FontAwesomeIcon icon={sortedDescSex ? true ? faSortDown: faSortUp: faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                        <th><button onClick={filterByBirthDate}>Sünnikuupäev<FontAwesomeIcon icon={sortedDescCode ? true ? faSortDown: faSortUp: faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterByName}>Eesnimi<FontAwesomeIcon icon={sortedName} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterBySurname}>Perekonnanimi<FontAwesomeIcon icon={sortedSurname} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterBySex}>Sugu<FontAwesomeIcon icon={sortedSex} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterByBirthDate}>Sünnikuupäev<FontAwesomeIcon icon={sortedCode} className='fa fa-sort'></FontAwesomeIcon></button></th>
                                         <th><button>Telefon</button></th>
                                     </tr>
                                 </thead>
