@@ -9,7 +9,7 @@ function ArtikkelContentById() {
     const [nimekiriList, setNimekiriList] = useState();
     const { id } = useParams();
     useEffect(() => {
-        fetch('https://midaiganes.irw.ee/api/list?limit=10')
+        fetch('https://midaiganes.irw.ee/api/list?limit=500')
             .then(res => res.json())
             .then(
                 (result) => setNimekiriList(result),
@@ -19,6 +19,8 @@ function ArtikkelContentById() {
 
     const chosenArtikkel = nimekiriList && nimekiriList["list"].find(item => item.id === id);
     console.log(chosenArtikkel);
+
+    
 
 
     return (

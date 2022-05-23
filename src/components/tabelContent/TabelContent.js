@@ -37,32 +37,61 @@ const useTable = (data, page, rowsPerPage) => {
 
 function TabelContent() {
     const [nimekiriList, setNimekiriList] = useState();
+    const setList = (list) => {
+        const newNimekiriList = { ...nimekiriList, list };
+        console.log(3);
+        console.log(newNimekiriList);
+        setNimekiriList(newNimekiriList);
+    }
     // const [currentPage, setCurrentPage] = useState(1);
     // const [itemsPerPage, setItemsPerPage] = useState(10);
     // const indexOfLastItem = currentPage * itemsPerPage;
     // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-        // const filterByName = () => {
-    //     const zopa = [...nimekiriList.list].sort((nameOne, nameTwo) => {
 
-    //         if (nameOne.name < nameTwo.name) {
-    //             return -1;
-    //         } else { return 1; }
-    //         return 0;
-    //     })
+    const filterByName = () => {
+        const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
+            if (firstItem.firstname < secondItem.firstname) return -1;
+            else if (firstItem.firstname > secondItem.firstname) return 1;
+            return 0;
+        });
 
-    //     console.log(zopa);
-    //     console.log(nimekiriList);
-    // }
-    // const filterBySurname = () => { }
-    // const filterBySex = () => { }
-    // const filterByBirthDate = () => { }
+        console.log(1);
+        console.log(sortedList);
+        console.log(2);
+        console.log(nimekiriList.list);
+        setList(sortedList)
+    }
+    const filterBySurname = () => {
+        const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
+            if (firstItem.surname < secondItem.surname) return -1;
+            else if (firstItem.surname > secondItem.surname) return 1;
+            return 0;
+        });
+        setList(sortedList)
+    }
+    const filterBySex = () => {
+        const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
+            if (firstItem.sex < secondItem.sex) return -1;
+            else if (firstItem.sex > secondItem.sex) return 1;
+            return 0;
+        });
+        setList(sortedList)
+    }
+    const filterByBirthDate = () => {
+        const sortedList = [...nimekiriList.list].sort((firstItem, secondItem) => {
+            if (firstItem.personal_code < secondItem.personal_code) return -1;
+            else if (firstItem.personal_code > secondItem.personal_code) return 1;
+            return 0;
+        });
+        setList(sortedList)
+    }
 
     const [itemIK, setItemIK] = useState();
     const [activeId, setActiveId] = useState();
 
     const [page, setPage] = useState(1);
     // const { slice, range } = useTable(nimekiriList["list"], page, 10);
-     
+
     const toggleClick = (id) => {
         return activeId != id ? setActiveId(id) : setActiveId(null)
     }
@@ -87,10 +116,10 @@ function TabelContent() {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th><button>Eesnimi<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                        <th><button>Perekonnanimi<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                        <th><button>Sugu<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
-                                        <th><button>Sünnikuupäev<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterByName}>Eesnimi<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterBySurname}>Perekonnanimi<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterBySex}>Sugu<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
+                                        <th><button onClick={filterByBirthDate}>Sünnikuupäev<FontAwesomeIcon icon={faSort} className='fa fa-sort'></FontAwesomeIcon></button></th>
                                         <th><button>Telefon</button></th>
                                     </tr>
                                 </thead>
